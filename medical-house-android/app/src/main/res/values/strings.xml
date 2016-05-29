@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Medical House</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="register_action"><u>Don\'t have an account? Press here to register.</u></string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="prompt_firstName">First name</string>
+    <string name="prompt_lastName">Last name</string>
+    <string name="prompt_gender">Gender</string>
+    <string name="action_register">Register</string>
+    <string name="prompt_age">Age</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+</resources>

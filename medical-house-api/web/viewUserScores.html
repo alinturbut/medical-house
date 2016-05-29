@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>View user scores</title>
+    <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+</head>
+<body>
+
+<div id="users">
+</div>
+
+<script type="text/javascript">
+    var currentAddress = "http://localhost:8089";
+
+    $(document).ready(function() {
+    	$('.userName').click(function(){
+	    	$.getJSON(currentAddress + "/user/getById?id=" + event.target.id, function(data){
+	    		$.each(data.user.scores, function(i,item){
+	    			$(this).append("<br> <h4>" + data.user.scores[i] + "</div>")
+	    		})
+	    	});
+	    });
+
+	    $.getJSON(currentAddress + "/user/getAll", function(data) {
+	    	$.each(data.users, function(i, item){
+	        	fillUserDiv(data.users[i]);
+	        });
+	    });
+
+	    function fillUserDiv(data) {
+	        $('#users').append("<h2 style='cursor: pointer;' class='userName' id='" + data._id + "'value='" + data._id + "'>" + data.firstName + " " + data.lastName + "</h2>");
+
+	        $('.userName').click(function(event){
+		    	$.getJSON(currentAddress + "/user/getById?id=" + event.target.id, function(data){
+		    		$.each(data.user.scores, function(i,item){
+		    			console.log(data.user.scores[i]);
+		    			var scoreString = "";
+		    			$.each(data.user.scores[i].scores, function(j,jitem){
+		    				scoreString += data.user.scores[i].scores[j] + " ";
+		    			});
+		    			$('#' + data.user._id).after("<br> <div>" + data.user.scores[i].name + ": " + scoreString + "</div>")
+		    		})
+		    	});
+	    	});
+	    }
+	});
+</script>
+</body>
+</html>
